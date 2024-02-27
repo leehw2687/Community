@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- ORM, Mapper파일! -->
+<mapper namespace="member">
+	<insert id="sign_up" parameterType="memberDTO">
+		insert into member values (#{member_id},#{member_pw},#{member_email},#{member_phone},#{member_nickname})
+	</insert>
+	
+	<update id="update" parameterType="memberDTO">
+		update member 
+		set member_name = #{member_name}, member_address = #{member_address},
+		    member_address = #{member_address}, member_img = #{member_img}  
+		where member_id = #{member_id} and member_pw = #{member_pw}
+	</update>
+	
+	<!-- 아이디 유무 체크 -->
+	<select id="existId" parameterType="memberDTO" resultType="int">
+		select count(*) from member where member_id = #{member_id}
+	</select>
+	
+	<update id="findPw" parameterType="memberDTO">
+		update member set member_pw = #{member_pw} where member_id = #{member_id} and member_email = #{member_email}
+	</update>
+	
+	<select id="login" parameterType="memberDTO" resultType="int">
+		select count(*) from member where member_id = #{member_id} and member_pw = #{member_pw}
+	</select>
+	
+	<select id="findId" parameterType="memberDTO" resultType="string">
+		select member_id from member where member_name = #{member_name} and member_email = #{member_email}
+	</select>
+	
+	
+	
+	<select id="one" parameterType="memberDTO" resultType="memberDTO">
+		select * from member where member_id = #{member_id}
+	</select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
