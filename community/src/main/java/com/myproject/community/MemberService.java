@@ -9,7 +9,12 @@ public class MemberService {
 	@Autowired
 	MemberDAO memberDAO;
 	
+	public int login(MemberDTO memberDTO) {
+		return memberDAO.login(memberDTO);
+	}
+	
 	public int signUp(MemberDTO memberDTO) {
 		return memberDAO.signUp(memberDTO);
 	}
+	
 }

@@ -5,17 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class MemberDAO {
+public class BbsDAO {
 	
 	@Autowired
 	SqlSessionTemplate sqlSession;
-	
-	public int login(MemberDTO memberDTO) {
-		return sqlSession.insert("member.login", memberDTO);
-	}
-	
-	public int signUp(MemberDTO memberDTO) {
-		return sqlSession.insert("member.sign_up", memberDTO);
-	}
-	
+
 }
